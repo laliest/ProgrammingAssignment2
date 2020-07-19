@@ -2,8 +2,6 @@
 ## so that it is stored and can be used without having to invert it again.
 
 ## makeCacheMatrix will invert and cache a matrix
-
-
 makeCacheMatrix <- function(x = matrix()) {
 
     matriz<-NULL
@@ -25,13 +23,21 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         
-  m<-x$getinverted()
+  matriz<-x$getinverted()
   if(!is.null(matriz)){
     return(matriz)
   }
   
-  data-x$get()
+  data<-x$get()
   matriz<-solve(data,...)
   x$setinverted(matriz)
   matriz
 }
+
+# Matrix to test the functions
+numeros<-c(-0.1033,-0.0801,-0.0858,-0.0853,-0.0822,-0.0602,-0.102,0.918,0.946)
+placa=matrix(numeros,3,3)
+#Functions put to test
+matrizobjeto <- makeCacheMatrix(placa)
+cacheSolve(matrizobjeto)
+
